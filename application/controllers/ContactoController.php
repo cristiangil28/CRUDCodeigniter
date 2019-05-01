@@ -5,7 +5,6 @@ class ContactoController extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('ContactoModel');
-		$this->load->helper('url');
 	}
 	//para volver privado un método le enteponemos al nombre un _
 	public function index(){

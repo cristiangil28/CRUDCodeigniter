@@ -10,7 +10,7 @@
 		}
 		public function getAll(){
 			
-			return $this->db->query('select * from contactos')->result();
+			return $this->db->get('contactos')->result();
 		}
 		public function setContacto($datos)
 		{
@@ -22,7 +22,7 @@
 		public function getContacto($id){
 			$query=$this->db->where('id',$id);
 			$query=$this->db->get('contactos');
-        	return $query->result();
+        	return $query->row();
 		}
 		
 		public function updateContacto($id,$datos){

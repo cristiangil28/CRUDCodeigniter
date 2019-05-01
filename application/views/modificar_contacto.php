@@ -18,28 +18,28 @@
 		<div class="form-group col-8">
 		<label>ID</label>
 		<input type="text" name="id" class="form-control" readonly="true" required="true"
-		value="<?php echo $modificarContacto[0]->id ?>"/>
+		value="<?php echo $modificarContacto->id ?>"/>
 		</div>
 		<div class="clearfix"></div>
 		<div class="form-group col-8">
 		<label>Email</label>
 		<input type="email" name="email" class="form-control" required="true" value="
-		<?php echo $modificarContacto[0]->email; ?>"/>
+		<?php echo $modificarContacto->email; ?>"/>
 		</div>
 		<div class="form-group col-8">
 		<label>Nombre</label>
 		<input type="text" name="nombre" class="form-control" required="true"
-		value="<?php echo $modificarContacto[0]->nombre; ?>"/>
+		value="<?php echo $modificarContacto->nombre; ?>"/>
 		</div>
 		<div class="form-group col-8">
 		<label>Teléfono</label>
 		<input type="text" name="telefono" class="form-control" required="true"
-		value="<?php echo $modificarContacto[0]->telefono; ?>"/>
+		value="<?php echo $modificarContacto->telefono; ?>"/>
 		</div>
 		<div class="form-group col-8">
 		<label>Edad</label>
 		<input type="number" name="edad" class="form-control" required="true"
-		value="<?php echo $modificarContacto[0]->edad; ?>"/>
+		value="<?php echo $modificarContacto->edad; ?>"/>
 		</div>
 		<div class="clearfix"></div>
 		<input type="submit" class="btn btn-primary" value="Enviar"/>
