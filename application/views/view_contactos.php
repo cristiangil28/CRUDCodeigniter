@@ -23,6 +23,7 @@ $input_email = array(
         'maxlength'   => '120',
         'size'=>'50',
         'class'=>'form-control',
+        'required'=>'true',
         'value'=>set_Value('email',@$datos_contacto[0]->email)
 );
 $input_nombre = array(
@@ -31,6 +32,7 @@ $input_nombre = array(
         'maxlength'   => '60',
         'size'=>'50',
         'class'=>'form-control',
+        'required'=>'true',
         'value'=>set_Value('nombre',@$datos_contacto[0]->nombre)
 );
 $input_telefono = array(
@@ -39,6 +41,7 @@ $input_telefono = array(
         'maxlength'   => '10',
         'size'=>'20',
         'class'=>'form-control',
+        'required'=>'true',
         'value'=>set_Value('telefono',@$datos_contacto[0]->telefono)
 );
 $input_edad = array(
@@ -47,18 +50,21 @@ $input_edad = array(
         'maxlength'   => '3',
         'size'=>'4',
         'class'=>'form-control',
+        'required'=>'true',
         'value'=>set_Value('edad',@$datos_contacto[0]->edad)
 );
 ?>
 <!--crear formulario con la ayuda de helpers-->
 
 <?php //errores de forma global  
-//echo validation_errors();
+
 echo('<div class="container">');
 echo '<div class="col-lg-5">';
 echo('<h1>Nuevo Contacto</h1>');
 ?>
-<?php echo form_open(base_url().'ContactoController/saveContacto')?>
+<?php 
+echo validation_errors();
+echo form_open(base_url().'ContactoController/saveContacto')?>
 <?php echo "<div class='form-group col-8'>"?>
 <?php echo form_label('Email')?>
 <?php echo form_input($input_email);

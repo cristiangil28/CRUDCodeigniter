@@ -4,7 +4,19 @@ class ContactoController extends CI_Controller{
 	
 	function __construct(){
 		parent::__construct();
-		$this->load->model('ContactoModel');
+		$this->load->library('form_validation');
+		$this->load->model('ContactoModel'); 
+		
+	}
+	public function reglasValidacion(){
+            /*se crean las reglas de validación*/
+            $this->form_validation->set_rules('email', 'Email', 'required|
+            valid_email');
+            $this->form_validation->set_rules('nombre', 'Nombre', 'required|
+            min_length[3]');
+            $this->form_validation->set_rules('edad', 'Edad', 'required|
+            integer');
+            $this->form_validation->set_rules('telefono', 'Teléfono', 'trim');
 	}
 	//para volver privado un método le enteponemos al nombre un _
 	public function index(){
@@ -15,7 +27,8 @@ class ContactoController extends CI_Controller{
 	public function saveContacto(){
 		
 		if($this->input->post()){
-			$datos=$this->input->post();
+			
+				$datos=$this->input->post();
 			if($this->ContactoModel->setContacto($datos)){
 				
 				header('Location:'.base_url().'ContactoController');
@@ -23,6 +36,9 @@ class ContactoController extends CI_Controller{
 				echo('no se cargaron');
 			}
 			
+			}else{
+				print_r($this->form_validation->run());
+				echo 'error de validación';	
 		}
 	}
 	public function modificarContacto($id=null){
@@ -36,6 +52,8 @@ class ContactoController extends CI_Controller{
 	}
 	public function updateContacto(){
 		if($this->input->post()){
+			if($this->form_validation->run()){
+			$this->reglasValidacion();
 			$datos=$this->input->post();
 			$id=$this->input->post('id');
 			if($this->ContactoModel->updateContacto($id,$datos)){
@@ -44,6 +62,7 @@ class ContactoController extends CI_Controller{
 			}
 			
 		}
+	}
 	}
 	public function eliminarContacto($id){
 		
